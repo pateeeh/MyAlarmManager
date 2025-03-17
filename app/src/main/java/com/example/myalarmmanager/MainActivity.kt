@@ -54,14 +54,17 @@ class MainActivity :
         binding?.btnOnceDate?.setOnClickListener(this)
         binding?.btnOnceTime?.setOnClickListener(this)
         binding?.btnSetOnceAlarm?.setOnClickListener(this)
-        alarmReceiver = AlarmReceiver()
 
         //listener repeating alarm
         binding?.btnRepeatingTime?.setOnClickListener(this)
         binding?.btnSetRepeatingAlarm?.setOnClickListener(this)
         binding?.btnCancelRepeatingAlarm?.setOnClickListener(this)
 
+        //listener cancel repeating alarm
+        binding?.btnCancelRepeatingAlarm?.setOnClickListener(this)
         alarmReceiver = AlarmReceiver()
+
+
     }
 
     override fun onClick(v : View?) {
@@ -93,6 +96,7 @@ class MainActivity :
                 alarmReceiver.setRepeatingAlarm(this, AlarmReceiver.TYPE_REPEATING,
                     repeatTime, repeatMessage)
             }
+            R.id.btn_cancel_repeating_alarm -> alarmReceiver.cancelAlarm(this, AlarmReceiver.TYPE_REPEATING)
         }
     }
 
